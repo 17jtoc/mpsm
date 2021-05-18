@@ -17,7 +17,8 @@ public class PlayerMovement : MonoBehaviour
     {
         myRigidbody = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
-        
+        animator.SetFloat("moveX", 0);
+        animator.SetFloat("moveY", -1);
     }
 
     // Update is called once per frame
@@ -81,6 +82,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (!noMove)
         {
+            mChange.Normalize();
             myRigidbody.MovePosition(transform.position + mChange * speed * Time.deltaTime);
         }
         
@@ -90,10 +92,10 @@ public class PlayerMovement : MonoBehaviour
     {
         noMove = true;
         animator.SetBool("attacking", true);
-        yield return new WaitForSeconds(0.50f);
+        yield return new WaitForSeconds(0.45f);
         animator.SetBool("attacking", false);
         noMove = false;
-        yield return new WaitForSeconds(0.35f);
+        
         
     }
 }
