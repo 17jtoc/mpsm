@@ -34,7 +34,7 @@ public class PlayerMovement : MonoBehaviour
         
         var sel = Input.GetButtonDown("VerticalSelector");
 
-        if (Input.GetButtonDown("Attack") && state == 1 && !noMove)
+        if (Input.GetButton("Attack") && state == 1 && !noMove)
         {
             
             StartCoroutine(AttackCo());

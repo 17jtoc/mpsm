@@ -2,22 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Maggot : MonoBehaviour
+public class Maggot : Enemy
 
     
 {
-    public int health;
-    public float moveSpeed;
-    public Transform target;
-    public float chaseRange;
-    public float attackRange;
-    public Transform home;
+    
     private Animator anim;
     // Start is called before the first frame update
     void Start()
     {
         anim = GetComponent<Animator>();
         target = GameObject.FindWithTag("Player").transform;
+        anim.SetFloat("moveX", 0);
+        anim.SetFloat("moveY", -1);
     }
 
     // Update is called once per frame
@@ -26,7 +23,7 @@ public class Maggot : MonoBehaviour
         CheckDist();
     }
 
-    public void Hurt()
+    public override void Hurt()
     {
         var smacked = anim.GetBool("smack");
         if (!smacked)
@@ -47,6 +44,9 @@ public class Maggot : MonoBehaviour
     {
         if(Vector3.Distance(target.position,transform.position) <= chaseRange && Vector3.Distance(target.position, transform.position) > attackRange)
         {
+            
+            anim.SetFloat("moveX", target.position.x - transform.position.x);
+            anim.SetFloat("moveY", target.position.y - transform.position.y);
             transform.position = Vector3.MoveTowards(transform.position, target.position, moveSpeed * Time.deltaTime);
         }
     }

@@ -20,7 +20,7 @@ public class PlayerHit : MonoBehaviour
     {
         if (collision.CompareTag("enemy"))
         {
-            collision.GetComponent<Maggot>().Hurt();
+            collision.GetComponent<Enemy>().Hurt();
         }
     }
 }
