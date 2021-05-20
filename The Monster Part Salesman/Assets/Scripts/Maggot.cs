@@ -25,18 +25,16 @@ public class Maggot : Enemy
 
     public override void Hurt()
     {
-        var smacked = anim.GetBool("smack");
-        if (!smacked)
-        {
-            anim.SetBool("smack", true);
-            StartCoroutine(ImGood());
-        } 
+        
+         anim.SetBool("smack", true);
+         StartCoroutine(ImGood());
+        
        
     }
 
     private IEnumerator ImGood()
     {
-        yield return new WaitForSeconds(0.45f);
+        yield return new WaitForSeconds(0.35f);
         anim.SetBool("smack", false);
     }
 
