@@ -318,7 +318,26 @@ SpriteAtlas:
   - {fileID: -2103097230231485640, guid: 3a040f6fafd6a8d4ba547deb57d4ef05, type: 3}
   - {fileID: -1795457581319569394, guid: 3a040f6fafd6a8d4ba547deb57d4ef05, type: 3}
   - {fileID: -779361459116271195, guid: 3a040f6fafd6a8d4ba547deb57d4ef05, type: 3}
-  - {fileID: 21300000, guid: 9f79b99fddc8d7c4884082c8cda0b674, type: 3}
+  - {fileID: -2662988919203481763, guid: 9f79b99fddc8d7c4884082c8cda0b674, type: 3}
+  - {fileID: 237923742586595873, guid: 9f79b99fddc8d7c4884082c8cda0b674, type: 3}
+  - {fileID: 1206015304661925373, guid: 9f79b99fddc8d7c4884082c8cda0b674, type: 3}
+  - {fileID: 6544210226748695276, guid: 9f79b99fddc8d7c4884082c8cda0b674, type: 3}
+  - {fileID: 3292863180389657883, guid: 9f79b99fddc8d7c4884082c8cda0b674, type: 3}
+  - {fileID: 2955104205275264160, guid: 9f79b99fddc8d7c4884082c8cda0b674, type: 3}
+  - {fileID: 2261158217540060827, guid: 9f79b99fddc8d7c4884082c8cda0b674, type: 3}
+  - {fileID: -7441491171210421613, guid: 9f79b99fddc8d7c4884082c8cda0b674, type: 3}
+  - {fileID: -715411325555461090, guid: 9f79b99fddc8d7c4884082c8cda0b674, type: 3}
+  - {fileID: -2344278626386151107, guid: 9f79b99fddc8d7c4884082c8cda0b674, type: 3}
+  - {fileID: 8796425161705900430, guid: 9f79b99fddc8d7c4884082c8cda0b674, type: 3}
+  - {fileID: -8250356109747265652, guid: 9f79b99fddc8d7c4884082c8cda0b674, type: 3}
+  - {fileID: 1611703966188451769, guid: 9f79b99fddc8d7c4884082c8cda0b674, type: 3}
+  - {fileID: -410728131653231488, guid: 9f79b99fddc8d7c4884082c8cda0b674, type: 3}
+  - {fileID: -5659145043431961186, guid: 9f79b99fddc8d7c4884082c8cda0b674, type: 3}
+  - {fileID: 1932036863204073588, guid: 9f79b99fddc8d7c4884082c8cda0b674, type: 3}
+  - {fileID: -7840727147085003168, guid: 9f79b99fddc8d7c4884082c8cda0b674, type: 3}
+  - {fileID: -4563541744236686057, guid: 9f79b99fddc8d7c4884082c8cda0b674, type: 3}
+  - {fileID: -5422322939938479672, guid: 9f79b99fddc8d7c4884082c8cda0b674, type: 3}
+  - {fileID: 6149698647228481402, guid: 9f79b99fddc8d7c4884082c8cda0b674, type: 3}
   m_PackedSpriteNamesToIndex:
   - trapsprites
   - playerknife_11
@@ -591,6 +610,25 @@ SpriteAtlas:
   - enemymaggot_42
   - enemymaggot_41
   - enemymaggot_40
-  - playerdamaged
+  - playerdamaged_0
+  - playerdamaged_1
+  - playerdamaged_2
+  - playerdamaged_3
+  - playerdamaged_4
+  - playerdamaged_5
+  - playerdamaged_6
+  - playerdamaged_7
+  - playerdamaged_8
+  - playerdamaged_9
+  - playerdamaged_13
+  - playerdamaged_12
+  - playerdamaged_11
+  - playerdamaged_10
+  - playerdamaged_17
+  - playerdamaged_16
+  - playerdamaged_15
+  - playerdamaged_14
+  - playerdamaged_19
+  - playerdamaged_18
   m_Tag: atlas
   m_IsVariant: 0

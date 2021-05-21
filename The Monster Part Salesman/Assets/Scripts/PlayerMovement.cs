@@ -11,6 +11,19 @@ public class PlayerMovement : MonoBehaviour
     public int state = 0;
     public int maxState = 2;
     public bool noMove = false;
+    public float knockDistance = 300;
+    public bool invincible;
+    
+
+    public Color flashColor;
+    public Color regularColor;
+    public float flashDuration;
+    public float numberOfFlashes;
+    public Collider2D triggerCollider;
+    public SpriteRenderer mySprite;
+
+    //for enemy collision
+    public Transform enemyDirection;
 
     // Start is called before the first frame update
     void Start()
@@ -26,6 +39,7 @@ public class PlayerMovement : MonoBehaviour
     {
         
         
+
         if (!noMove){
             mChange = Vector3.zero;
             mChange.x = Input.GetAxisRaw("Horizontal");
@@ -53,7 +67,7 @@ public class PlayerMovement : MonoBehaviour
         UpdateAnimationAndMove();
         
     }
-
+    
     void UpdateAnimationAndMove()
     {
         if (state == 1)
@@ -98,4 +112,57 @@ public class PlayerMovement : MonoBehaviour
         
         
     }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.CompareTag("enemy"))
+        {
+           if (!noMove && !invincible)
+            {
+                enemyDirection = collision.GetComponent<Enemy>().transform;
+                StartCoroutine(KnockCo());
+                
+                
+            }
+          
+            
+            
+        }
+    }
+
+    private IEnumerator KnockCo()
+    {
+        noMove = true;
+        Vector2 difference = transform.position - enemyDirection.position;
+        difference = difference.normalized;
+        //animator.SetFloat("moveX", difference.x);
+        //animator.SetFloat("moveY", difference.y);
+        animator.SetBool("reg_damage", true);
+        StartCoroutine(IncincibleCo());
+        myRigidbody.AddForce(difference * 300f);
+        yield return new WaitForSeconds(0.08f);
+        animator.SetBool("reg_damage", false);
+        noMove = false;
+        myRigidbody.velocity = Vector3.zero;
+        myRigidbody.angularVelocity = 0f;
+
+
+    }
+
+    private IEnumerator IncincibleCo()
+    {
+        int temp = 0;
+        invincible = true;
+        while (temp < numberOfFlashes)
+        {
+            mySprite.color = regularColor;
+            yield return new WaitForSeconds(flashDuration);
+            mySprite.color = flashColor;
+            yield return new WaitForSeconds(flashDuration);
+            temp++;
+        }
+        mySprite.color = regularColor;
+        invincible = false;
+    }
+
 }
