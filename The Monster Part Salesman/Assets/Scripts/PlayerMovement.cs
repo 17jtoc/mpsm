@@ -135,8 +135,7 @@ public class PlayerMovement : MonoBehaviour
         noMove = true;
         Vector2 difference = transform.position - enemyDirection.position;
         difference = difference.normalized;
-        //animator.SetFloat("moveX", difference.x);
-        //animator.SetFloat("moveY", difference.y);
+        
         animator.SetBool("reg_damage", true);
         StartCoroutine(IncincibleCo());
         myRigidbody.AddForce(difference * 300f);
