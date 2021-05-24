@@ -11,6 +11,7 @@ public class Enemy : MonoBehaviour
     public float chaseRange;
     public float attackRange;
     public Transform home;
+    public Transform hitPos;
     // Start is called before the first frame update
     void Start()
     {
@@ -24,4 +25,6 @@ public class Enemy : MonoBehaviour
     }
 
     public virtual void Hurt() { }
+
+    
 }
