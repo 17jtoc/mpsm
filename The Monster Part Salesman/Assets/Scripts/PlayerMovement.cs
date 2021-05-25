@@ -13,7 +13,7 @@ public class PlayerMovement : MonoBehaviour
     public bool noMove = false;
     public float knockDistance = 300;
     public bool invincible;
-    
+    private bool bonked = false;
 
     public Color flashColor;
     public Color regularColor;
@@ -37,6 +37,11 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!bonked)
+        {
+            myRigidbody.velocity = Vector3.zero;
+            myRigidbody.angularVelocity = 0f;
+        }
         
         
 
@@ -135,7 +140,7 @@ public class PlayerMovement : MonoBehaviour
         noMove = true;
         Vector2 difference = transform.position - enemyDirection.position;
         difference = difference.normalized;
-        
+        bonked = true;
         animator.SetBool("reg_damage", true);
         StartCoroutine(IncincibleCo());
         myRigidbody.AddForce(difference * 300f);
@@ -144,6 +149,7 @@ public class PlayerMovement : MonoBehaviour
         noMove = false;
         myRigidbody.velocity = Vector3.zero;
         myRigidbody.angularVelocity = 0f;
+        bonked = false;
 
 
     }

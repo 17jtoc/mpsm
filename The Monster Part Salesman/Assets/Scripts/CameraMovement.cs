@@ -17,6 +17,13 @@ public class CameraMovement : MonoBehaviour
     // Update is called once per frame
     void LateUpdate()
     {
+        SpriteRenderer[] renderers = FindObjectsOfType<SpriteRenderer>();
+
+        foreach(SpriteRenderer renderer in renderers)
+        {
+            renderer.sortingOrder = (int)(renderer.transform.position.y * -100);
+        }
+
         if(transform.position != target.position)
         {
             Vector3 targetPos = new Vector3(target.position.x, target.position.y, transform.position.z);
