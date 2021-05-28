@@ -43,8 +43,7 @@ public class Maggot : Enemy
         StartCoroutine(ImGood());
         knockCount++;
         StartCoroutine(CoolDown());
-        attackRange = 1.5f;
-        moveSpeed = 1f;
+        
 
 
 
@@ -60,7 +59,7 @@ public class Maggot : Enemy
         myRigidbody.velocity = Vector3.zero;
         myRigidbody.angularVelocity = 0f;
         bonked = false;
-        yield return new WaitForSeconds(0.5f);
+        
         knockCount--;
         if (knockCount < 1)
         {
@@ -74,15 +73,7 @@ public class Maggot : Enemy
 
     void CheckDist()
     {
-        if (striking)
-        {
-            anim.SetFloat("moveX", tempStrike.x);
-            anim.SetFloat("moveY", tempStrike.y);
-            Vector3 temp = Vector3.MoveTowards(transform.position, tempStrike, moveSpeed * Time.deltaTime);
-            myRigidbody.MovePosition(temp);
-
-        }
-        else if(Vector3.Distance(target.position,transform.position) <= chaseRange && Vector3.Distance(target.position, transform.position) > attackRange && knockCount < 1)
+        if(Vector3.Distance(target.position,transform.position) <= chaseRange && Vector3.Distance(target.position, transform.position) > attackRange && knockCount < 1 && !striking)
         {
             
             anim.SetFloat("moveX", target.position.x - transform.position.x);
@@ -90,10 +81,10 @@ public class Maggot : Enemy
             Vector3 temp = Vector3.MoveTowards(transform.position, target.position, moveSpeed * Time.deltaTime);
             myRigidbody.MovePosition(temp);
         }
-        else if(Vector3.Distance(target.position, transform.position) < 3f && !strikeCD)
+        else if(Vector3.Distance(target.position, transform.position) < 3f && !strikeCD && !striking)
         {
             tempStrike = target.position - transform.position;
-            tempStrike = tempStrike * 30f;
+            tempStrike = tempStrike.normalized;
             StartCoroutine(AttackCo());
         }
     }
@@ -101,15 +92,16 @@ public class Maggot : Enemy
     private IEnumerator AttackCo()
     {
         anim.SetBool("strike", true);
-        attackRange = 0f;
-        moveSpeed = 0f;
-        yield return new WaitForSeconds(0.30f);
+        
+        
         striking = true;
-        attackRange = 0.1f;
-        moveSpeed = 5f;
         yield return new WaitForSeconds(0.30f);
-        attackRange = 1.5f;
-        moveSpeed = 1f;
+        
+        bonked = true;
+        myRigidbody.AddForce(tempStrike * 300f);
+        yield return new WaitForSeconds(0.30f);
+        bonked = false;
+        
         anim.SetBool("strike", false);
         striking = false;
         StartCoroutine(CoolDown());
