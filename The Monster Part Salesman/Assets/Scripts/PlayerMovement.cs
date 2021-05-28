@@ -8,12 +8,15 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody2D myRigidbody;
     private Vector3 mChange;
     private Animator animator;
-    public int state = 0;
-    public int maxState = 2;
+    public int trapState = 0;
+    public int weaponState = 0;
+    public int maxWeaponState = 1;
+    public int maxTrapState = 1;
     public bool noMove = false;
     public float knockDistance = 300;
     public bool invincible;
     private bool bonked = false;
+    private int tool = 0;
 
     public Color flashColor;
     public Color regularColor;
@@ -51,22 +54,45 @@ public class PlayerMovement : MonoBehaviour
             mChange.y = Input.GetAxisRaw("Vertical");
         }
         
-        var sel = Input.GetButtonDown("VerticalSelector");
+        var toolSel = Input.GetButtonDown("HorizontalSelector");
 
-        if (Input.GetButton("Attack") && state == 1 && !noMove)
+        if (toolSel)
         {
-            
-            StartCoroutine(AttackCo());
-        }
-        else if (sel)
-        {
-            
-            state = state + 1;
-            if(state == maxState)
+            if (tool == 0)
             {
-                state = 0;
+                tool = 1;
+            }
+            else
+            {
+                tool = 0;
             }
         }
+
+        var stateSel = Input.GetButtonDown("VerticalSelector");
+
+        if(tool == 0)
+        {
+
+        }
+        else
+        {
+            if (Input.GetButton("Attack") && !noMove)
+            {
+
+                StartCoroutine(AttackCo());
+            }
+            else if (stateSel)
+            {
+
+                weaponState = weaponState + 1;
+                if (weaponState == maxWeaponState)
+                {
+                    weaponState = 0;
+                }
+            }
+        }
+
+       
         
 
         UpdateAnimationAndMove();
@@ -75,7 +101,7 @@ public class PlayerMovement : MonoBehaviour
     
     void UpdateAnimationAndMove()
     {
-        if (state == 1)
+        if (tool == 1)
         {
             animator.SetBool("knife_selected", true);
         }
