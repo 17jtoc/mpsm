@@ -5,8 +5,6 @@ TagManager:
   serializedVersion: 2
   tags:
   - enemy
-  - destroytrap
-  - trap
   layers:
   - Default
   - TransparentFX
@@ -41,20 +39,11 @@ TagManager:
   - 
   - 
   m_SortingLayers:
-  - name: unseen
-    uniqueID: 938234481
-    locked: 0
-  - name: ground
-    uniqueID: 2841537857
-    locked: 0
-  - name: upperground
-    uniqueID: 2791400719
+  - name: Default
+    uniqueID: 0
     locked: 0
   - name: ground traps
     uniqueID: 237271865
-    locked: 0
-  - name: Default
-    uniqueID: 0
     locked: 0
   - name: enemies
     uniqueID: 2245369967

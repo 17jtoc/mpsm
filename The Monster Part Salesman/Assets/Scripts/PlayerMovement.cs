@@ -18,7 +18,7 @@ public class PlayerMovement : MonoBehaviour
     private bool bonked = false;
     private int tool = 0;
 
-    public Vector3 playerDirection = Vector3.down;
+    
     public GameObject beartrap;
 
     public Color flashColor;
@@ -38,28 +38,11 @@ public class PlayerMovement : MonoBehaviour
         animator = GetComponent<Animator>();
         animator.SetFloat("moveX", 0);
         animator.SetFloat("moveY", -1);
-        mChange = Vector3.down;
     }
 
     // Update is called once per frame
     void Update()
     {
-
-        if(mChange.y == -1f)
-        {
-            playerDirection = Vector3.down;
-        }else if(mChange.y == 1f)
-        {
-            playerDirection = Vector3.up;
-        }else if (mChange.x == -1f)
-        {
-            playerDirection = Vector3.left;
-        }else if (mChange.x == 1f)
-        {
-            playerDirection = Vector3.right;
-        }
-
-
         if (!bonked)
         {
             myRigidbody.velocity = Vector3.zero;
@@ -183,7 +166,7 @@ public class PlayerMovement : MonoBehaviour
         
         
         yield return new WaitForSeconds(0.45f);
-        Instantiate(beartrap, transform.position + playerDirection, transform.rotation);
+        Instantiate(beartrap, transform.position + mChange, transform.rotation);
         noMove = false;
 
 
