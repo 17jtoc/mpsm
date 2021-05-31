@@ -18,6 +18,9 @@ public class PlayerMovement : MonoBehaviour
     private bool bonked = false;
     private int tool = 0;
 
+    
+    public GameObject beartrap;
+
     public Color flashColor;
     public Color regularColor;
     public float flashDuration;
@@ -72,7 +75,20 @@ public class PlayerMovement : MonoBehaviour
 
         if(tool == 0)
         {
+            if (Input.GetButton("Attack") && !noMove)
+            {
 
+                StartCoroutine(BearTrapCo());
+            }
+            else if (stateSel)
+            {
+
+                trapState = trapState + 1;
+                if (trapState == maxTrapState)
+                {
+                    trapState = 0;
+                }
+            }
         }
         else
         {
@@ -142,6 +158,18 @@ public class PlayerMovement : MonoBehaviour
         noMove = false;
         
         
+    }
+
+    private IEnumerator BearTrapCo()
+    {
+        noMove = true;
+        
+        
+        yield return new WaitForSeconds(0.45f);
+        Instantiate(beartrap, transform.position + mChange, transform.rotation);
+        noMove = false;
+
+
     }
 
     private void OnTriggerStay2D(Collider2D collision)

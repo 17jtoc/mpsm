@@ -42,6 +42,9 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: ground traps
+    uniqueID: 237271865
+    locked: 0
   - name: enemies
     uniqueID: 2245369967
     locked: 0
