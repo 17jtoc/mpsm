@@ -28,7 +28,7 @@ public class BearTrap : MonoBehaviour
 
     private IEnumerator TrapCo()
     {
-        yield return new WaitForSeconds(0.45f);
+        yield return new WaitForSeconds(0.40f);
         animator.SetBool("readyTrap", true);
         ready = true;
         trapCollider.enabled = true;
