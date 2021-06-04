@@ -157,7 +157,14 @@ SpriteAtlas:
   - {fileID: 6212511421331425777, guid: 6ae85c9c8a0fd1d459aba90bfeb447f5, type: 3}
   - {fileID: 3082252175678351615, guid: 6ae85c9c8a0fd1d459aba90bfeb447f5, type: 3}
   - {fileID: -3814859145869216816, guid: 6ae85c9c8a0fd1d459aba90bfeb447f5, type: 3}
-  - {fileID: 21300000, guid: b3e86aaeb473b8c40bbf290f0ef0c683, type: 3}
+  - {fileID: 3566103333853401500, guid: b3e86aaeb473b8c40bbf290f0ef0c683, type: 3}
+  - {fileID: -453724778078299039, guid: b3e86aaeb473b8c40bbf290f0ef0c683, type: 3}
+  - {fileID: 8895276911948545333, guid: b3e86aaeb473b8c40bbf290f0ef0c683, type: 3}
+  - {fileID: 4292850009347341024, guid: b3e86aaeb473b8c40bbf290f0ef0c683, type: 3}
+  - {fileID: 1499983959590346527, guid: b3e86aaeb473b8c40bbf290f0ef0c683, type: 3}
+  - {fileID: 4974320635999115195, guid: b3e86aaeb473b8c40bbf290f0ef0c683, type: 3}
+  - {fileID: 5917492449661954542, guid: b3e86aaeb473b8c40bbf290f0ef0c683, type: 3}
+  - {fileID: 1406856161689675629, guid: b3e86aaeb473b8c40bbf290f0ef0c683, type: 3}
   - {fileID: -6093103500246784085, guid: 5cf987ce5df6f0a4e82bff17c59731b8, type: 3}
   - {fileID: 3603811543578375624, guid: 5cf987ce5df6f0a4e82bff17c59731b8, type: 3}
   - {fileID: -3340809290383202332, guid: 5cf987ce5df6f0a4e82bff17c59731b8, type: 3}
@@ -473,7 +480,14 @@ SpriteAtlas:
   - mountaincolliders_1
   - mountaincolliders_2
   - mountaincolliders_3
-  - playerplacetrap
+  - playerplacetrap_1
+  - playerplacetrap_0
+  - playerplacetrap_3
+  - playerplacetrap_2
+  - playerplacetrap_5
+  - playerplacetrap_4
+  - playerplacetrap_7
+  - playerplacetrap_6
   - tilesset1_114
   - tilesset1_115
   - tilesset1_116
