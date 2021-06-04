@@ -180,10 +180,12 @@ public class PlayerMovement : MonoBehaviour
     private IEnumerator BearTrapCo()
     {
         noMove = true;
-        
-        
-        yield return new WaitForSeconds(0.45f);
+
+        animator.SetBool("placing", true);
         Instantiate(beartrap, transform.position + playerDirection, transform.rotation);
+        yield return new WaitForSeconds(0.45f);
+        
+        animator.SetBool("placing", false);
         noMove = false;
 
 
