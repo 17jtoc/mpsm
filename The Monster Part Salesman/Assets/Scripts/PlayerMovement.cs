@@ -199,12 +199,14 @@ public class PlayerMovement : MonoBehaviour
             {
                 enemyDirection = collision.GetComponent<Enemy>().transform;
                 StartCoroutine(KnockCo());
-                
-                
             }
-          
-            
-            
+        }else if(collision.CompareTag("trap"))
+        {
+            if (!noMove && !invincible)
+            {
+                enemyDirection = collision.GetComponent<BearTrap>().transform;
+                StartCoroutine(KnockCo());
+            }
         }
     }
 
