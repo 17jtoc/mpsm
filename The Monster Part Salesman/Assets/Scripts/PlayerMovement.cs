@@ -204,8 +204,8 @@ public class PlayerMovement : MonoBehaviour
         {
             if (!noMove && !invincible)
             {
-                enemyDirection = collision.GetComponent<BearTrap>().transform;
-                StartCoroutine(KnockCo());
+                Destroy(collision.gameObject);
+                StartCoroutine(BearTrappedCo());
             }
         }
     }
@@ -227,6 +227,16 @@ public class PlayerMovement : MonoBehaviour
         bonked = false;
 
 
+    }
+
+    private IEnumerator BearTrappedCo()
+    {
+        noMove = true;
+        animator.SetBool("bearTrapped", true);
+        StartCoroutine(IncincibleCo());
+        yield return new WaitForSeconds(0.20f);
+        noMove = false;
+        animator.SetBool("bearTrapped", false);
     }
 
     private IEnumerator IncincibleCo()
