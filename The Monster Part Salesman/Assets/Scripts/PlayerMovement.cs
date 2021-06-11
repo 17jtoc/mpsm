@@ -234,7 +234,7 @@ public class PlayerMovement : MonoBehaviour
         noMove = true;
         animator.SetBool("bearTrapped", true);
         StartCoroutine(IncincibleCo());
-        yield return new WaitForSeconds(0.20f);
+        yield return new WaitForSeconds(0.30f);
         noMove = false;
         animator.SetBool("bearTrapped", false);
     }
