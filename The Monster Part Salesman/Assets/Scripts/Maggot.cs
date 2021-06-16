@@ -6,6 +6,7 @@ public class Maggot : Enemy
 
     
 {
+    private bool trapped = false;
     private int knockCount = 0;
     private Animator anim;
     private Rigidbody2D myRigidbody;
@@ -38,11 +39,23 @@ public class Maggot : Enemy
 
     public override void Hurt()
     {
+
+        if (trapped)
+        {
+            anim.SetBool("smack", true);
+            StartCoroutine(ImGoodTrapped());
+            knockCount++;
+            StartCoroutine(CoolDown());
+        }
+        else
+        {
+            anim.SetBool("smack", true);
+            StartCoroutine(ImGood());
+            knockCount++;
+            StartCoroutine(CoolDown());
+        }
         
-        anim.SetBool("smack", true);
-        StartCoroutine(ImGood());
-        knockCount++;
-        StartCoroutine(CoolDown());
+        
         
 
 
@@ -71,9 +84,27 @@ public class Maggot : Enemy
         
     }
 
+    private IEnumerator ImGoodTrapped()
+    {
+        anim.SetBool("traphit", true);
+        yield return new WaitForSeconds(0.12f);
+        
+
+        knockCount--;
+        if (knockCount < 1)
+        {
+            anim.SetBool("traphit", false);
+            anim.SetBool("smack", false);
+
+        }
+
+
+
+    }
+
     void CheckDist()
     {
-        if(Vector3.Distance(target.position,transform.position) <= chaseRange && Vector3.Distance(target.position, transform.position) > attackRange && knockCount < 1 && !striking)
+        if(Vector3.Distance(target.position,transform.position) <= chaseRange && Vector3.Distance(target.position, transform.position) > attackRange && knockCount < 1 && !striking && !trapped)
         {
             
             anim.SetFloat("moveX", target.position.x - transform.position.x);
@@ -81,7 +112,7 @@ public class Maggot : Enemy
             Vector3 temp = Vector3.MoveTowards(transform.position, target.position, moveSpeed * Time.deltaTime);
             myRigidbody.MovePosition(temp);
         }
-        else if(Vector3.Distance(target.position, transform.position) < 3f && !strikeCD && !striking)
+        else if(Vector3.Distance(target.position, transform.position) < 3f && !strikeCD && !striking && !trapped)
         {
             tempStrike = target.position - transform.position;
             tempStrike = tempStrike.normalized;
@@ -119,5 +150,31 @@ public class Maggot : Enemy
             strikeCD = false;
         }
         
+    }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.CompareTag("trap") && !trapped)
+        {
+            
+            Destroy(collision.gameObject);
+            StartCoroutine(BearTrappedCo());
+            
+        }
+    }
+
+    private IEnumerator BearTrappedCo()
+    {
+        trapped = true;
+        bonked = false;
+        strikeCD = true;
+        
+        anim.SetBool("bearTrap", true);
+        yield return new WaitForSeconds(6.00f);
+        strikeCD = false;
+        anim.SetBool("bearTrap", false);
+        
+        trapped = false;
+        StartCoroutine(CoolDown());
     }
 }
