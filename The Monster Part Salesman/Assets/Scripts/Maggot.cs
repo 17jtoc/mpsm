@@ -93,7 +93,7 @@ public class Maggot : Enemy
         knockCount--;
         if (knockCount < 1)
         {
-            anim.SetBool("traphit", false);
+            
             anim.SetBool("smack", false);
 
         }
@@ -165,15 +165,17 @@ public class Maggot : Enemy
 
     private IEnumerator BearTrappedCo()
     {
+        myRigidbody.bodyType = RigidbodyType2D.Static;
         trapped = true;
         bonked = false;
         strikeCD = true;
         
         anim.SetBool("bearTrap", true);
+        
         yield return new WaitForSeconds(6.00f);
         strikeCD = false;
         anim.SetBool("bearTrap", false);
-        
+        myRigidbody.bodyType = RigidbodyType2D.Dynamic;
         trapped = false;
         StartCoroutine(CoolDown());
     }
