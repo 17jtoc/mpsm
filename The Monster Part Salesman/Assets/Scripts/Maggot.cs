@@ -15,10 +15,15 @@ public class Maggot : Enemy
     private bool strikeCD = false;
     private bool bonked = false;
     private int CDcount = 0;
+    private float slowForce = 1.0f;
+    public SpriteRenderer mySprite;
+    public int honeytrapcount = 0;
+
 
     // Start is called before the first frame update
     void Start()
     {
+        mySprite = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
         target = GameObject.FindWithTag("Player").transform;
         anim.SetFloat("moveX", 0);
@@ -129,7 +134,7 @@ public class Maggot : Enemy
         yield return new WaitForSeconds(0.30f);
         
         bonked = true;
-        myRigidbody.AddForce(tempStrike * 300f);
+        myRigidbody.AddForce(tempStrike * 300f * slowForce);
         yield return new WaitForSeconds(0.30f);
         bonked = false;
         
@@ -158,7 +163,21 @@ public class Maggot : Enemy
         {
             
             Destroy(collision.gameObject);
-            StartCoroutine(BearTrappedCo());
+            if (collision.GetComponent<Trap>().trapType == "bear")
+            {
+                StartCoroutine(BearTrappedCo());
+            }
+            if (collision.GetComponent<Trap>().trapType == "honey")
+            {
+
+                StartCoroutine(HoneyTrappedCo());
+
+
+            }
+
+            
+            
+            
             
         }
     }
@@ -178,5 +197,26 @@ public class Maggot : Enemy
         myRigidbody.bodyType = RigidbodyType2D.Dynamic;
         trapped = false;
         StartCoroutine(CoolDown());
+    }
+
+    private IEnumerator HoneyTrappedCo()
+    {
+        honeytrapcount++;
+        if(honeytrapcount == 1)
+        {
+            slowForce = 0.5f;
+            moveSpeed = 0.5f;
+            mySprite.color = slowColor;
+        }
+        yield return new WaitForSeconds(6.00f);
+        honeytrapcount--;
+        if(honeytrapcount == 0)
+        {
+            slowForce = 1.0f;
+            moveSpeed = 1.0f;
+            mySprite.color = regularColor;
+        }
+        
+
     }
 }

@@ -12,6 +12,9 @@ public class Enemy : MonoBehaviour
     public float attackRange;
     public Transform home;
     public Transform hitPos;
+    
+    public Color regularColor;
+    public Color slowColor;
     // Start is called before the first frame update
     void Start()
     {

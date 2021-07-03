@@ -125,6 +125,10 @@ MonoBehaviour:
   attackRange: 1.5
   home: {fileID: 0}
   hitPos: {fileID: 0}
+  regularColor: {r: 1, g: 1, b: 1, a: 1}
+  slowColor: {r: 0.8784314, g: 0.65882355, b: 0.50980395, a: 1}
+  mySprite: {fileID: 0}
+  honeytrapcount: 0
 --- !u!50 &3346501905610470279
 Rigidbody2D:
   serializedVersion: 4

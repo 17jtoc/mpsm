@@ -2,17 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BearTrap : MonoBehaviour
+public class BearTrap : Trap
 {
 
     private Animator animator;
     private Collider2D trapCollider;
     public bool ready = false;
     public bool debug = false;
+    
     // Start is called before the first frame update
     void Start()
     {
-        
+        trapType = "bear";
         StartCoroutine(TrapCo());
         animator = GetComponent<Animator>();
         trapCollider = GetComponent<Collider2D>();

@@ -11,18 +11,23 @@ public class PlayerMovement : MonoBehaviour
     public int trapState = 0;
     public int weaponState = 0;
     public int maxWeaponState = 1;
-    public int maxTrapState = 1;
+    private int maxTrapState = 2;
     public bool noMove = false;
     public float knockDistance = 300;
     public bool invincible;
     private bool bonked = false;
     private int tool = 0;
+    private int honeytrapcount = 0;
+    private float oldSpeed;
+    private Color oldColor;
 
     public Vector3 playerDirection = Vector3.down;
     public GameObject beartrap;
+    public GameObject honeytrap;
 
     public Color flashColor;
     public Color regularColor;
+    public Color slowColor;
     public float flashDuration;
     public float numberOfFlashes;
     public Collider2D triggerCollider;
@@ -34,6 +39,7 @@ public class PlayerMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        mySprite = GetComponent<SpriteRenderer>();
         myRigidbody = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         animator.SetFloat("moveX", 0);
@@ -92,10 +98,15 @@ public class PlayerMovement : MonoBehaviour
 
         if(tool == 0)
         {
-            if (Input.GetButton("Attack") && !noMove)
+            if (trapState == 0 && Input.GetButton("Attack") && !noMove)
             {
 
                 StartCoroutine(BearTrapCo());
+            }
+            else if (trapState == 1 && Input.GetButton("Attack") && !noMove)
+            {
+
+                StartCoroutine(HoneyTrapCo());
             }
             else if (stateSel)
             {
@@ -191,6 +202,30 @@ public class PlayerMovement : MonoBehaviour
 
     }
 
+    private IEnumerator HoneyTrapCo()
+    {
+        noMove = true;
+
+        animator.SetBool("placing", true);
+        if (playerDirection == Vector3.left || playerDirection == Vector3.right)
+        {
+            Instantiate(honeytrap, transform.position + playerDirection + Vector3.down * 0.2f, transform.rotation);
+        }
+        else
+        {
+            Instantiate(honeytrap, transform.position + playerDirection, transform.rotation);
+        }
+        
+        yield return new WaitForSeconds(0.45f);
+
+        animator.SetBool("placing", false);
+        noMove = false;
+
+
+    }
+
+
+    //COLLISION HANDLING
     private void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.CompareTag("enemy"))
@@ -205,7 +240,18 @@ public class PlayerMovement : MonoBehaviour
             if (!noMove && !invincible)
             {
                 Destroy(collision.gameObject);
-                StartCoroutine(BearTrappedCo());
+                if (collision.GetComponent<Trap>().trapType == "bear")
+                {
+                    StartCoroutine(BearTrappedCo());
+                }
+                if (collision.GetComponent<Trap>().trapType == "honey")
+                {
+                    
+                     StartCoroutine(HoneyTrappedCo());
+                    
+                    
+                }
+
             }
         }
     }
@@ -237,6 +283,30 @@ public class PlayerMovement : MonoBehaviour
         yield return new WaitForSeconds(0.30f);
         noMove = false;
         animator.SetBool("bearTrapped", false);
+    }
+
+    private IEnumerator HoneyTrappedCo()
+    {
+        honeytrapcount++;
+        if(honeytrapcount == 1)
+        {
+            oldSpeed = speed;
+            speed = 2.0f;
+            oldColor = regularColor;
+            regularColor = slowColor;
+            mySprite.color = regularColor;
+        }
+        yield return new WaitForSeconds(3.30f);
+        honeytrapcount--;
+        if(honeytrapcount == 0)
+        {
+            speed = oldSpeed;
+            regularColor = oldColor;
+            mySprite.color = regularColor;
+        }
+        
+
+
     }
 
     private IEnumerator IncincibleCo()
