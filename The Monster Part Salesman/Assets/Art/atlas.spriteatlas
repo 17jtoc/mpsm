@@ -43,7 +43,7 @@ SpriteAtlas:
     variantMultiplier: 1
     packables:
     - {fileID: 102900000, guid: 087ea7d135c2d214282413da87b74909, type: 3}
-    totalSpriteSurfaceArea: 206560
+    totalSpriteSurfaceArea: 248032
     bindAsDefault: 1
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
@@ -157,6 +157,7 @@ SpriteAtlas:
   - {fileID: 6212511421331425777, guid: 6ae85c9c8a0fd1d459aba90bfeb447f5, type: 3}
   - {fileID: 3082252175678351615, guid: 6ae85c9c8a0fd1d459aba90bfeb447f5, type: 3}
   - {fileID: -3814859145869216816, guid: 6ae85c9c8a0fd1d459aba90bfeb447f5, type: 3}
+  - {fileID: 21300000, guid: 13d19f2ed4f56dd4e946b23791cd94db, type: 3}
   - {fileID: 3566103333853401500, guid: b3e86aaeb473b8c40bbf290f0ef0c683, type: 3}
   - {fileID: -453724778078299039, guid: b3e86aaeb473b8c40bbf290f0ef0c683, type: 3}
   - {fileID: 8895276911948545333, guid: b3e86aaeb473b8c40bbf290f0ef0c683, type: 3}
@@ -480,6 +481,7 @@ SpriteAtlas:
   - mountaincolliders_1
   - mountaincolliders_2
   - mountaincolliders_3
+  - explosion
   - playerplacetrap_1
   - playerplacetrap_0
   - playerplacetrap_3
