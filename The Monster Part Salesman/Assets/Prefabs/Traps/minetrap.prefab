@@ -167,3 +167,5 @@ MonoBehaviour:
   trapType: 
   ready: 0
   debug: 0
+  explosion: {fileID: 6795988381931366592, guid: 1a715a85bbc059c4d9c9e864c3f12ee9,
+    type: 3}

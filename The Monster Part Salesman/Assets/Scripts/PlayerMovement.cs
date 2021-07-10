@@ -266,10 +266,11 @@ public class PlayerMovement : MonoBehaviour
                 }
                 if (collision.GetComponent<Trap>().trapType == "honey")
                 {
-                    
                      StartCoroutine(HoneyTrappedCo());
-                    
-                    
+                }
+                if (collision.GetComponent<Trap>().trapType == "mine")
+                {
+                    collision.GetComponent<MineTrap>().generateExplosion();
                 }
 
             }

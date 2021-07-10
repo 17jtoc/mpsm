@@ -9,11 +9,12 @@ public class MineTrap : Trap
     private Collider2D trapCollider;
     public bool ready = false;
     public bool debug = false;
+    public GameObject explosion;
 
     // Start is called before the first frame update
     void Start()
     {
-        trapType = "bear";
+        trapType = "mine";
         StartCoroutine(TrapCo());
         animator = GetComponent<Animator>();
         trapCollider = GetComponent<Collider2D>();
@@ -46,5 +47,10 @@ public class MineTrap : Trap
 
 
         }
+    }
+
+    public void generateExplosion()
+    {
+        Instantiate(explosion, transform.position, transform.rotation);
     }
 }
