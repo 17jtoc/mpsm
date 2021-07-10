@@ -11,7 +11,7 @@ public class PlayerMovement : MonoBehaviour
     public int trapState = 0;
     public int weaponState = 0;
     public int maxWeaponState = 1;
-    private int maxTrapState = 2;
+    private int maxTrapState = 3;
     public bool noMove = false;
     public float knockDistance = 300;
     public bool invincible;
@@ -24,6 +24,7 @@ public class PlayerMovement : MonoBehaviour
     public Vector3 playerDirection = Vector3.down;
     public GameObject beartrap;
     public GameObject honeytrap;
+    public GameObject minetrap;
 
     public Color flashColor;
     public Color regularColor;
@@ -107,6 +108,11 @@ public class PlayerMovement : MonoBehaviour
             {
 
                 StartCoroutine(HoneyTrapCo());
+            }
+            else if (trapState == 2 && Input.GetButton("Attack") && !noMove)
+            {
+
+                StartCoroutine(MineTrapCo());
             }
             else if (stateSel)
             {
@@ -216,6 +222,20 @@ public class PlayerMovement : MonoBehaviour
             Instantiate(honeytrap, transform.position + playerDirection, transform.rotation);
         }
         
+        yield return new WaitForSeconds(0.45f);
+
+        animator.SetBool("placing", false);
+        noMove = false;
+
+
+    }
+
+    private IEnumerator MineTrapCo()
+    {
+        noMove = true;
+
+        animator.SetBool("placing", true);
+        Instantiate(minetrap, transform.position + playerDirection, transform.rotation);
         yield return new WaitForSeconds(0.45f);
 
         animator.SetBool("placing", false);

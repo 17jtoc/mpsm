@@ -124,6 +124,7 @@ SpriteAtlas:
   - {fileID: 1887235625828893481, guid: 53289e6565fdf344685de702fe8652a5, type: 3}
   - {fileID: 5651239643257197053, guid: 53289e6565fdf344685de702fe8652a5, type: 3}
   - {fileID: -6631939602444000338, guid: 53289e6565fdf344685de702fe8652a5, type: 3}
+  - {fileID: 21300000, guid: 0caa6c677faa39345b6b6faba6cd41dc, type: 3}
   - {fileID: 111136370017457478, guid: ce87badb10e354c408a9010a62ddf718, type: 3}
   - {fileID: -9100843693438640403, guid: ce87badb10e354c408a9010a62ddf718, type: 3}
   - {fileID: -6658181614206817805, guid: ce87badb10e354c408a9010a62ddf718, type: 3}
@@ -157,7 +158,6 @@ SpriteAtlas:
   - {fileID: 6212511421331425777, guid: 6ae85c9c8a0fd1d459aba90bfeb447f5, type: 3}
   - {fileID: 3082252175678351615, guid: 6ae85c9c8a0fd1d459aba90bfeb447f5, type: 3}
   - {fileID: -3814859145869216816, guid: 6ae85c9c8a0fd1d459aba90bfeb447f5, type: 3}
-  - {fileID: 21300000, guid: 13d19f2ed4f56dd4e946b23791cd94db, type: 3}
   - {fileID: 3566103333853401500, guid: b3e86aaeb473b8c40bbf290f0ef0c683, type: 3}
   - {fileID: -453724778078299039, guid: b3e86aaeb473b8c40bbf290f0ef0c683, type: 3}
   - {fileID: 8895276911948545333, guid: b3e86aaeb473b8c40bbf290f0ef0c683, type: 3}
@@ -448,6 +448,7 @@ SpriteAtlas:
   - playerknife_51
   - playerknife_34
   - playerknife_50
+  - explosion
   - playerwalkidle_19
   - playerwalkidle_18
   - playerwalkidle_13
@@ -481,7 +482,6 @@ SpriteAtlas:
   - mountaincolliders_1
   - mountaincolliders_2
   - mountaincolliders_3
-  - explosion
   - playerplacetrap_1
   - playerplacetrap_0
   - playerplacetrap_3
