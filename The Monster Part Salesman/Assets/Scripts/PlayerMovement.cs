@@ -20,6 +20,7 @@ public class PlayerMovement : MonoBehaviour
     private int honeytrapcount = 0;
     private float oldSpeed;
     private Color oldColor;
+    private float knockSize = 300f;
 
     public Vector3 playerDirection = Vector3.down;
     public GameObject beartrap;
@@ -267,6 +268,7 @@ public class PlayerMovement : MonoBehaviour
            if (!noMove && !invincible)
             {
                 enemyDirection = collision.GetComponent<Enemy>().transform;
+                knockSize = 500f;
                 StartCoroutine(KnockCo());
             }
         }else if(collision.CompareTag("trap"))
@@ -293,7 +295,8 @@ public class PlayerMovement : MonoBehaviour
             if (!noMove && !invincible)
             {
                 enemyDirection = collision.GetComponent<Explosion>().transform;
-                StartCoroutine(BigKnockCo());
+                knockSize = 900f;
+                StartCoroutine(KnockCo());
             }
         }
     }
@@ -306,7 +309,7 @@ public class PlayerMovement : MonoBehaviour
         bonked = true;
         animator.SetBool("reg_damage", true);
         StartCoroutine(IncincibleCo());
-        myRigidbody.AddForce(difference * 300f);
+        myRigidbody.AddForce(difference * knockSize);
         yield return new WaitForSeconds(0.08f);
         animator.SetBool("reg_damage", false);
         noMove = false;
@@ -317,24 +320,6 @@ public class PlayerMovement : MonoBehaviour
 
     }
 
-    private IEnumerator BigKnockCo()
-    {
-        noMove = true;
-        Vector2 difference = transform.position - enemyDirection.position;
-        difference = difference.normalized;
-        bonked = true;
-        animator.SetBool("reg_damage", true);
-        StartCoroutine(IncincibleCo());
-        myRigidbody.AddForce(difference * 700f);
-        yield return new WaitForSeconds(0.08f);
-        animator.SetBool("reg_damage", false);
-        noMove = false;
-        myRigidbody.velocity = Vector3.zero;
-        myRigidbody.angularVelocity = 0f;
-        bonked = false;
-
-
-    }
 
     private IEnumerator BearTrappedCo()
     {

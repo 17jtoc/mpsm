@@ -72,7 +72,7 @@ public class Maggot : Enemy
         bonked = true;
         Vector2 difference = transform.position - hitPos.position;
         difference = difference.normalized;
-        myRigidbody.AddForce(difference * 30f);
+        myRigidbody.AddForce(difference * 40f);
         yield return new WaitForSeconds(0.12f);
         myRigidbody.velocity = Vector3.zero;
         myRigidbody.angularVelocity = 0f;
@@ -184,6 +184,10 @@ public class Maggot : Enemy
 
 
 
+        }else if (collision.CompareTag("explosion"))
+        {
+            hitPos = collision.transform;
+            Hurt();
         }
     }
 
