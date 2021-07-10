@@ -199,7 +199,14 @@ public class PlayerMovement : MonoBehaviour
         noMove = true;
 
         animator.SetBool("placing", true);
-        Instantiate(beartrap, transform.position + playerDirection, transform.rotation);
+        if (playerDirection == Vector3.left || playerDirection == Vector3.right)
+        {
+            Instantiate(beartrap, transform.position + playerDirection + Vector3.down * 0.2f, transform.rotation);
+        }
+        else
+        {
+            Instantiate(beartrap, transform.position + playerDirection, transform.rotation);
+        }
         yield return new WaitForSeconds(0.45f);
         
         animator.SetBool("placing", false);
@@ -235,7 +242,14 @@ public class PlayerMovement : MonoBehaviour
         noMove = true;
 
         animator.SetBool("placing", true);
-        Instantiate(minetrap, transform.position + playerDirection, transform.rotation);
+        if (playerDirection == Vector3.left || playerDirection == Vector3.right)
+        {
+            Instantiate(minetrap, transform.position + playerDirection + Vector3.down * 0.2f, transform.rotation);
+        }
+        else
+        {
+            Instantiate(minetrap, transform.position + playerDirection, transform.rotation);
+        }
         yield return new WaitForSeconds(0.45f);
 
         animator.SetBool("placing", false);
@@ -274,6 +288,13 @@ public class PlayerMovement : MonoBehaviour
                 }
 
             }
+        }else if (collision.CompareTag("explosion"))
+        {
+            if (!noMove && !invincible)
+            {
+                enemyDirection = collision.GetComponent<Explosion>().transform;
+                StartCoroutine(BigKnockCo());
+            }
         }
     }
 
@@ -286,6 +307,25 @@ public class PlayerMovement : MonoBehaviour
         animator.SetBool("reg_damage", true);
         StartCoroutine(IncincibleCo());
         myRigidbody.AddForce(difference * 300f);
+        yield return new WaitForSeconds(0.08f);
+        animator.SetBool("reg_damage", false);
+        noMove = false;
+        myRigidbody.velocity = Vector3.zero;
+        myRigidbody.angularVelocity = 0f;
+        bonked = false;
+
+
+    }
+
+    private IEnumerator BigKnockCo()
+    {
+        noMove = true;
+        Vector2 difference = transform.position - enemyDirection.position;
+        difference = difference.normalized;
+        bonked = true;
+        animator.SetBool("reg_damage", true);
+        StartCoroutine(IncincibleCo());
+        myRigidbody.AddForce(difference * 700f);
         yield return new WaitForSeconds(0.08f);
         animator.SetBool("reg_damage", false);
         noMove = false;

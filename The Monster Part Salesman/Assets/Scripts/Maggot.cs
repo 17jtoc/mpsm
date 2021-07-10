@@ -177,6 +177,7 @@ public class Maggot : Enemy
             if (collision.GetComponent<Trap>().trapType == "mine")
             {
                 collision.GetComponent<MineTrap>().generateExplosion();
+
             }
 
 
