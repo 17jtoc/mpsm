@@ -43,7 +43,7 @@ SpriteAtlas:
     variantMultiplier: 1
     packables:
     - {fileID: 102900000, guid: 087ea7d135c2d214282413da87b74909, type: 3}
-    totalSpriteSurfaceArea: 248032
+    totalSpriteSurfaceArea: 242848
     bindAsDefault: 1
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
@@ -124,7 +124,13 @@ SpriteAtlas:
   - {fileID: 1887235625828893481, guid: 53289e6565fdf344685de702fe8652a5, type: 3}
   - {fileID: 5651239643257197053, guid: 53289e6565fdf344685de702fe8652a5, type: 3}
   - {fileID: -6631939602444000338, guid: 53289e6565fdf344685de702fe8652a5, type: 3}
-  - {fileID: 21300000, guid: 0caa6c677faa39345b6b6faba6cd41dc, type: 3}
+  - {fileID: 5684552838703836615, guid: 0caa6c677faa39345b6b6faba6cd41dc, type: 3}
+  - {fileID: -4927540249515241657, guid: 0caa6c677faa39345b6b6faba6cd41dc, type: 3}
+  - {fileID: -1000500801407918923, guid: 0caa6c677faa39345b6b6faba6cd41dc, type: 3}
+  - {fileID: -5243772346084840235, guid: 0caa6c677faa39345b6b6faba6cd41dc, type: 3}
+  - {fileID: -8092295105046505211, guid: 0caa6c677faa39345b6b6faba6cd41dc, type: 3}
+  - {fileID: 3730887761424324059, guid: 0caa6c677faa39345b6b6faba6cd41dc, type: 3}
+  - {fileID: -4009157606203222040, guid: 0caa6c677faa39345b6b6faba6cd41dc, type: 3}
   - {fileID: 111136370017457478, guid: ce87badb10e354c408a9010a62ddf718, type: 3}
   - {fileID: -9100843693438640403, guid: ce87badb10e354c408a9010a62ddf718, type: 3}
   - {fileID: -6658181614206817805, guid: ce87badb10e354c408a9010a62ddf718, type: 3}
@@ -448,7 +454,13 @@ SpriteAtlas:
   - playerknife_51
   - playerknife_34
   - playerknife_50
-  - explosion
+  - explosion_5
+  - explosion_4
+  - explosion_6
+  - explosion_1
+  - explosion_0
+  - explosion_3
+  - explosion_2
   - playerwalkidle_19
   - playerwalkidle_18
   - playerwalkidle_13
