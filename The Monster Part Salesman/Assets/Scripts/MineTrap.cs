@@ -25,7 +25,10 @@ public class MineTrap : Trap
     // Update is called once per frame
     void Update()
     {
-
+        if (trapCount == 0)
+        {
+            Destroy(this.gameObject);
+        }
     }
 
     private IEnumerator TrapCo()

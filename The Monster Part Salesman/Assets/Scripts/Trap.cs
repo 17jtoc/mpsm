@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Trap : MonoBehaviour
 {
+    public int trapCount = 3;
     public string trapType;
     // Start is called before the first frame update
     void Start()
@@ -16,4 +17,6 @@ public class Trap : MonoBehaviour
     {
         
     }
+
+ 
 }

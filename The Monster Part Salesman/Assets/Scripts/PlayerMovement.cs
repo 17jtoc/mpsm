@@ -198,7 +198,7 @@ public class PlayerMovement : MonoBehaviour
     private IEnumerator BearTrapCo()
     {
         noMove = true;
-
+        LowerTrapCounts();
         animator.SetBool("placing", true);
         if (playerDirection == Vector3.left || playerDirection == Vector3.right)
         {
@@ -219,7 +219,7 @@ public class PlayerMovement : MonoBehaviour
     private IEnumerator HoneyTrapCo()
     {
         noMove = true;
-
+        LowerTrapCounts();
         animator.SetBool("placing", true);
         if (playerDirection == Vector3.left || playerDirection == Vector3.right)
         {
@@ -241,7 +241,7 @@ public class PlayerMovement : MonoBehaviour
     private IEnumerator MineTrapCo()
     {
         noMove = true;
-
+        LowerTrapCounts();
         animator.SetBool("placing", true);
         if (playerDirection == Vector3.left || playerDirection == Vector3.right)
         {
@@ -369,6 +369,15 @@ public class PlayerMovement : MonoBehaviour
         }
         mySprite.color = regularColor;
         invincible = false;
+    }
+
+    private void LowerTrapCounts()
+    {
+        Trap[] traps = FindObjectsOfType<Trap>();
+        foreach (Trap i in traps){
+            i.trapCount--;
+            
+        }
     }
 
 }
