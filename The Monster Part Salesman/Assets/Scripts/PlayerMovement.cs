@@ -22,6 +22,8 @@ public class PlayerMovement : MonoBehaviour
     private Color oldColor;
     private float knockSize = 300f;
 
+    public int trapsAllowed = 1;
+
     public Vector3 playerDirection = Vector3.down;
     public GameObject beartrap;
     public GameObject honeytrap;
@@ -202,11 +204,14 @@ public class PlayerMovement : MonoBehaviour
         animator.SetBool("placing", true);
         if (playerDirection == Vector3.left || playerDirection == Vector3.right)
         {
-            Instantiate(beartrap, transform.position + playerDirection + Vector3.down * 0.2f, transform.rotation);
+            
+            GameObject newtrap = Instantiate(beartrap, transform.position + playerDirection + Vector3.down * 0.2f, transform.rotation);
+            newtrap.gameObject.GetComponent<Trap>().trapCount = trapsAllowed;
         }
         else
         {
-            Instantiate(beartrap, transform.position + playerDirection, transform.rotation);
+            GameObject newtrap = Instantiate(beartrap, transform.position + playerDirection, transform.rotation);
+            newtrap.gameObject.GetComponent<Trap>().trapCount = trapsAllowed;
         }
         yield return new WaitForSeconds(0.45f);
         
@@ -223,11 +228,13 @@ public class PlayerMovement : MonoBehaviour
         animator.SetBool("placing", true);
         if (playerDirection == Vector3.left || playerDirection == Vector3.right)
         {
-            Instantiate(honeytrap, transform.position + playerDirection + Vector3.down * 0.2f, transform.rotation);
+            GameObject newtrap = Instantiate(honeytrap, transform.position + playerDirection + Vector3.down * 0.2f, transform.rotation);
+            newtrap.gameObject.GetComponent<Trap>().trapCount = trapsAllowed;
         }
         else
         {
-            Instantiate(honeytrap, transform.position + playerDirection, transform.rotation);
+            GameObject newtrap = Instantiate(honeytrap, transform.position + playerDirection, transform.rotation);
+            newtrap.gameObject.GetComponent<Trap>().trapCount = trapsAllowed;
         }
         
         yield return new WaitForSeconds(0.45f);
@@ -245,11 +252,13 @@ public class PlayerMovement : MonoBehaviour
         animator.SetBool("placing", true);
         if (playerDirection == Vector3.left || playerDirection == Vector3.right)
         {
-            Instantiate(minetrap, transform.position + playerDirection + Vector3.down * 0.2f, transform.rotation);
+            GameObject newtrap = Instantiate(minetrap, transform.position + playerDirection + Vector3.down * 0.2f, transform.rotation);
+            newtrap.gameObject.GetComponent<Trap>().trapCount = trapsAllowed;
         }
         else
         {
-            Instantiate(minetrap, transform.position + playerDirection, transform.rotation);
+            GameObject newtrap = Instantiate(minetrap, transform.position + playerDirection, transform.rotation);
+            newtrap.gameObject.GetComponent<Trap>().trapCount = trapsAllowed;
         }
         yield return new WaitForSeconds(0.45f);
 
