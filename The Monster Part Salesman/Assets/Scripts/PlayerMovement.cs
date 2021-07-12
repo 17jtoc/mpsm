@@ -99,8 +99,9 @@ public class PlayerMovement : MonoBehaviour
         }
 
         var stateSel = Input.GetButtonDown("VerticalSelector");
+        var stateSelSign = Input.GetAxisRaw("VerticalSelector");
 
-        if(tool == 0)
+        if (tool == 0)
         {
             if (trapState == 0 && Input.GetButton("Attack") && !noMove)
             {
@@ -120,11 +121,23 @@ public class PlayerMovement : MonoBehaviour
             else if (stateSel)
             {
 
-                trapState = trapState + 1;
-                if (trapState == maxTrapState)
+                if(stateSelSign > 0)
                 {
-                    trapState = 0;
+                    trapState = trapState + 1;
+                    if (trapState == maxTrapState)
+                    {
+                        trapState = 0;
+                    }
+                }else if (stateSelSign < 0)
+                {
+                    trapState = trapState - 1;
+                    if (trapState == -1)
+                    {
+                        trapState = maxTrapState - 1;
+                    }
                 }
+
+
             }
         }
         else
