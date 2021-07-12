@@ -5,6 +5,8 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     public float speed;
+    public int maxHealth = 50;
+    public int currentHealth;
     private Rigidbody2D myRigidbody;
     private Vector3 mChange;
     private Animator animator;
@@ -28,6 +30,7 @@ public class PlayerMovement : MonoBehaviour
     public GameObject beartrap;
     public GameObject honeytrap;
     public GameObject minetrap;
+    public HealthBar healthBar;
 
     public Color flashColor;
     public Color regularColor;
@@ -49,12 +52,14 @@ public class PlayerMovement : MonoBehaviour
         animator.SetFloat("moveX", 0);
         animator.SetFloat("moveY", -1);
         mChange = Vector3.down;
+        currentHealth = maxHealth;
+        healthBar.SetMaxHealth(maxHealth);
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        healthBar.SetHealth(currentHealth);
         if(mChange.y == -1f)
         {
             playerDirection = Vector3.down;
@@ -105,7 +110,7 @@ public class PlayerMovement : MonoBehaviour
         {
             if (trapState == 0 && Input.GetButton("Attack") && !noMove)
             {
-
+                currentHealth = currentHealth - 10; //DELETE LATER JUST FOR TESTING HEALTH BAR
                 StartCoroutine(BearTrapCo());
             }
             else if (trapState == 1 && Input.GetButton("Attack") && !noMove)
