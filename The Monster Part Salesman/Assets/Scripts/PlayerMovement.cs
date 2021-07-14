@@ -110,7 +110,6 @@ public class PlayerMovement : MonoBehaviour
         {
             if (trapState == 0 && Input.GetButton("Attack") && !noMove)
             {
-                currentHealth = currentHealth - 10; //DELETE LATER JUST FOR TESTING HEALTH BAR
                 StartCoroutine(BearTrapCo());
             }
             else if (trapState == 1 && Input.GetButton("Attack") && !noMove)
@@ -241,6 +240,7 @@ public class PlayerMovement : MonoBehaviour
 
     private IEnumerator HoneyTrapCo()
     {
+        currentHealth = currentHealth + 10;
         noMove = true;
         LowerTrapCounts();
         animator.SetBool("placing", true);
@@ -294,6 +294,7 @@ public class PlayerMovement : MonoBehaviour
         {
            if (!noMove && !invincible)
             {
+                currentHealth = currentHealth - 10;
                 enemyDirection = collision.GetComponent<Enemy>().transform;
                 knockSize = 500f;
                 StartCoroutine(KnockCo());
@@ -305,6 +306,7 @@ public class PlayerMovement : MonoBehaviour
                 Destroy(collision.gameObject);
                 if (collision.GetComponent<Trap>().trapType == "bear")
                 {
+                    currentHealth = currentHealth - 10;
                     StartCoroutine(BearTrappedCo());
                 }
                 if (collision.GetComponent<Trap>().trapType == "honey")
@@ -321,6 +323,7 @@ public class PlayerMovement : MonoBehaviour
         {
             if (!noMove && !invincible)
             {
+                currentHealth = currentHealth - 15;
                 enemyDirection = collision.GetComponent<Explosion>().transform;
                 knockSize = 900f;
                 StartCoroutine(KnockCo());
