@@ -31,6 +31,7 @@ public class PlayerMovement : MonoBehaviour
     public GameObject honeytrap;
     public GameObject minetrap;
     public HealthBar healthBar;
+    public PlayerHand playerHand;
 
     public Color flashColor;
     public Color regularColor;
@@ -80,6 +81,10 @@ public class PlayerMovement : MonoBehaviour
             myRigidbody.velocity = Vector3.zero;
             myRigidbody.angularVelocity = 0f;
         }
+
+
+        playerHand.setWeapon(weaponState);
+        playerHand.setTrap(trapState);
         
         
 
@@ -96,10 +101,12 @@ public class PlayerMovement : MonoBehaviour
             if (tool == 0)
             {
                 tool = 1;
+                playerHand.setBack(1);
             }
             else
             {
                 tool = 0;
+                playerHand.setBack(0);
             }
         }
 

@@ -43,7 +43,7 @@ SpriteAtlas:
     variantMultiplier: 1
     packables:
     - {fileID: 102900000, guid: 087ea7d135c2d214282413da87b74909, type: 3}
-    totalSpriteSurfaceArea: 243876
+    totalSpriteSurfaceArea: 253854
     bindAsDefault: 1
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
@@ -73,6 +73,11 @@ SpriteAtlas:
   - {fileID: -7262160166145116856, guid: 54c66583d9d2c934581e1cecb66554b8, type: 3}
   - {fileID: 5100860751915446744, guid: 54c66583d9d2c934581e1cecb66554b8, type: 3}
   - {fileID: 21300000, guid: 7b5894e39ad6bca429edc2888e3a67d9, type: 3}
+  - {fileID: -3862246482939330172, guid: 20902874e5229b141a355406714224f5, type: 3}
+  - {fileID: 1078718195195570111, guid: 20902874e5229b141a355406714224f5, type: 3}
+  - {fileID: -8058859859756950811, guid: 20902874e5229b141a355406714224f5, type: 3}
+  - {fileID: 873468227892224563, guid: 20902874e5229b141a355406714224f5, type: 3}
+  - {fileID: -5664557576245214956, guid: 20902874e5229b141a355406714224f5, type: 3}
   - {fileID: 1187003226114283804, guid: 53289e6565fdf344685de702fe8652a5, type: 3}
   - {fileID: -5962695247330973066, guid: 53289e6565fdf344685de702fe8652a5, type: 3}
   - {fileID: 2066318218260606522, guid: 53289e6565fdf344685de702fe8652a5, type: 3}
@@ -125,6 +130,8 @@ SpriteAtlas:
   - {fileID: 1887235625828893481, guid: 53289e6565fdf344685de702fe8652a5, type: 3}
   - {fileID: 5651239643257197053, guid: 53289e6565fdf344685de702fe8652a5, type: 3}
   - {fileID: -6631939602444000338, guid: 53289e6565fdf344685de702fe8652a5, type: 3}
+  - {fileID: 7529263456507093708, guid: 980b8fc51d11ac54ab6fd0b6fa5fedb1, type: 3}
+  - {fileID: 1178917181981365006, guid: 980b8fc51d11ac54ab6fd0b6fa5fedb1, type: 3}
   - {fileID: 5684552838703836615, guid: 0caa6c677faa39345b6b6faba6cd41dc, type: 3}
   - {fileID: -4927540249515241657, guid: 0caa6c677faa39345b6b6faba6cd41dc, type: 3}
   - {fileID: -1000500801407918923, guid: 0caa6c677faa39345b6b6faba6cd41dc, type: 3}
@@ -405,6 +412,11 @@ SpriteAtlas:
   - backgroundcolliders_9
   - backgroundcolliders_8
   - bar
+  - handtoolicons_1
+  - handtoolicons_0
+  - handtoolicons_3
+  - handtoolicons_2
+  - handtoolicons_4
   - playerknife_11
   - playerknife_10
   - playerknife_13
@@ -457,6 +469,8 @@ SpriteAtlas:
   - playerknife_51
   - playerknife_34
   - playerknife_50
+  - PlayerHand_0
+  - PlayerHand_1
   - explosion_5
   - explosion_4
   - explosion_6
